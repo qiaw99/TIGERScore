@@ -20,7 +20,6 @@ setup(
         'accelerate',
         'gradio',
         'tiktoken',
-        'llama-cpp-python',
         'protobuf',
         'sentencepiece',
         'accelerate'
