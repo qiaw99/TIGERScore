@@ -1,7 +1,6 @@
 import os
 import regex as re
 import importlib
-import llama_cpp
 from string import Template
 from typing import List
 from tqdm import tqdm
@@ -53,15 +52,7 @@ class TIGERScorer(object):
         self.use_llamacpp = use_llamacpp
         self.tokenizer = None
         if use_llamacpp:
-            if use_vllm:
-                print("Warning: use_vllm is ignored when use_llamacpp is True.")
-            # assert model_name.endswith(".gguf"), "llamacpp model name should end with .gguf, please check if this model is a valid llamacpp model."
-            if not os.path.exists(model_name):
-                from huggingface_hub import hf_hub_download
-                model_path = hf_hub_download(repo_id=model_name, filename="ggml-model-q4_0.gguf")
-                self.model = llama_cpp.Llama(model_path, n_ctx=1024)
-            else:
-                self.model = llama_cpp.Llama(model_name, n_ctx=1024)
+            pass
         elif use_vllm:
             import torch
             import vllm
